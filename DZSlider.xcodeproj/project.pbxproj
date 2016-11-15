@@ -13,6 +13,7 @@
 		F2ECCD0E1DDB4CFF008892A1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2ECCD0C1DDB4CFF008892A1 /* Main.storyboard */; };
 		F2ECCD101DDB4CFF008892A1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2ECCD0F1DDB4CFF008892A1 /* Assets.xcassets */; };
 		F2ECCD131DDB4CFF008892A1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2ECCD111DDB4CFF008892A1 /* LaunchScreen.storyboard */; };
+		F2ECCD1D1DDB4D5E008892A1 /* DZSliderChooseColor.m in Sources */ = {isa = PBXBuildFile; fileRef = F2ECCD1C1DDB4D5E008892A1 /* DZSliderChooseColor.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,8 @@
 		F2ECCD0F1DDB4CFF008892A1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F2ECCD121DDB4CFF008892A1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F2ECCD141DDB4CFF008892A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F2ECCD1B1DDB4D5E008892A1 /* DZSliderChooseColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DZSliderChooseColor.h; path = "颜色选取滑块/DZSliderChooseColor.h"; sourceTree = "<group>"; };
+		F2ECCD1C1DDB4D5E008892A1 /* DZSliderChooseColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DZSliderChooseColor.m; path = "颜色选取滑块/DZSliderChooseColor.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +61,7 @@
 		F2ECCD021DDB4CFF008892A1 /* DZSlider */ = {
 			isa = PBXGroup;
 			children = (
+				F2ECCD1A1DDB4D04008892A1 /* 颜色选取滑块 */,
 				F2ECCD061DDB4CFF008892A1 /* AppDelegate.h */,
 				F2ECCD071DDB4CFF008892A1 /* AppDelegate.m */,
 				F2ECCD091DDB4CFF008892A1 /* ViewController.h */,
@@ -77,6 +81,15 @@
 				F2ECCD041DDB4CFF008892A1 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F2ECCD1A1DDB4D04008892A1 /* 颜色选取滑块 */ = {
+			isa = PBXGroup;
+			children = (
+				F2ECCD1B1DDB4D5E008892A1 /* DZSliderChooseColor.h */,
+				F2ECCD1C1DDB4D5E008892A1 /* DZSliderChooseColor.m */,
+			);
+			name = "颜色选取滑块";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -152,6 +165,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F2ECCD0B1DDB4CFF008892A1 /* ViewController.m in Sources */,
+				F2ECCD1D1DDB4D5E008892A1 /* DZSliderChooseColor.m in Sources */,
 				F2ECCD081DDB4CFF008892A1 /* AppDelegate.m in Sources */,
 				F2ECCD051DDB4CFF008892A1 /* main.m in Sources */,
 			);

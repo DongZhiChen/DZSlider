@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  DZSliderChooseColor.h
 //  DZSlider
 //
 //  Created by 陈东芝 on 16/11/15.
@@ -8,10 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-#import "DZSliderChooseColor.h"
-
-@interface ViewController : UIViewController
-
+@interface DZSliderChooseColor : UIControl
 
 @end
-

@@ -17,6 +17,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    
+    DZSliderChooseColor *slider = [[DZSliderChooseColor alloc] initWithFrame:CGRectMake(0, 100, 250, 35)];
+    [self.view addSubview:slider];
+    
 }
 
 
