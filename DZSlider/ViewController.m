@@ -19,11 +19,16 @@
     // Do any additional setup after loading the view, typically from a nib.
     
     DZSliderChooseColor *slider = [[DZSliderChooseColor alloc] initWithFrame:CGRectMake(0, 100, 250, 35)];
+    [slider addTarget:self action:@selector(test:) forControlEvents:UIControlEventValueChanged];
     [self.view addSubview:slider];
     
 }
 
+-(void)test:(DZSliderChooseColor *)sender{
 
+    NSLog(@"change%f",sender.value);
+    
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

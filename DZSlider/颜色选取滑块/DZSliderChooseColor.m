@@ -8,13 +8,17 @@
 
 #import "DZSliderChooseColor.h"
 
-static CGFloat colorBarHeight = 15.0;
+static CGFloat colorBarHeight = 6.0;
 static CGFloat sliderWidth = 20.0;
 
 
 @implementation DZSliderChooseColor{
 
     UIView *slider;
+    CGFloat barWidth;
+    CGFloat maxRight;
+    CGFloat maxLeft;
+    CAGradientLayer *gradientLayer;
     
 }
 
@@ -25,23 +29,107 @@ static CGFloat sliderWidth = 20.0;
     
     if(self){
         
+        frame.size.height = colorBarHeight + sliderWidth;
+        self.frame = frame;
+        self.layer.opaque = NO;
         
-        self.layer.masksToBounds =YES;
-        [self sliderBar];
-        [self slider];
-        
+        [self initData];
+        [self initView];
+       
     }
     
     return self;
 }
 
 
+-(void)drawRect:(CGRect)rect{
+
+    [super drawRect:rect];
+    
+    if(!gradientLayer)
+    [self sliderBar];
+    
+}
+
+-(void)initView{
+
+    self.layer.masksToBounds =YES;
+
+    [self slider];
+    
+}
+
+
+-(void)initData{
+
+    self.maxValue = 1;
+    self.minVlaue = 0;
+    _value = 0.5;
+    barWidth = CGRectGetWidth(self.bounds)-sliderWidth;
+
+    maxRight = CGRectGetWidth(self.bounds)-sliderWidth/2.0;
+    
+    maxLeft = sliderWidth/2.0;
+    
+}
+
+
+-(void)changeValue:(UIGestureRecognizer *)GR{
+
+    if(GR.state == UIGestureRecognizerStateChanged){
+    
+       CGPoint point = [GR locationInView:self];
+        
+        if(point.x <= maxRight && point.x > maxLeft){
+        
+            _value = (point.x * _maxValue) / barWidth;
+            
+            CGPoint barPoint = slider.center;
+            barPoint.x = point.x;
+            slider.center = barPoint;
+            
+        }else if(point.x < maxLeft){
+        
+            CGPoint barPoint = slider.center;
+            barPoint.x = maxLeft;
+            slider.center = barPoint;
+            
+            _value = _minVlaue;
+            
+        }else if(point.x > maxRight){
+        
+            CGPoint barPoint = slider.center;
+            barPoint.x = maxRight;
+            slider.center = barPoint;
+            
+            _value = _maxValue;
+        }
+       
+        
+    }
+    
+    [self sendActionsForControlEvents:UIControlEventValueChanged];
+    
+}
+
+
 
 -(void)sliderBar{
     
-    CAGradientLayer *gradientLayer = [CAGradientLayer layer];
+    gradientLayer = [CAGradientLayer layer];
     
-    gradientLayer.colors = @[(__bridge id)[UIColor blackColor].CGColor,(__bridge id)[UIColor redColor].CGColor];
+    if(_startColor == nil){
+    
+        _startColor = [UIColor whiteColor];
+    }
+    
+    if(_endColor == nil){
+    
+        _endColor = [UIColor redColor];
+        
+    }
+    
+    gradientLayer.colors = @[(__bridge id)self.startColor.CGColor,(__bridge id)self.endColor.CGColor];
     gradientLayer.locations = @[@0,@1];
     gradientLayer.startPoint = CGPointMake(0, 0.5);
     gradientLayer.endPoint = CGPointMake(1, 0.5);
@@ -58,6 +146,10 @@ static CGFloat sliderWidth = 20.0;
     slider = [[UIView alloc] initWithFrame:CGRectMake(0, colorBarHeight, sliderWidth, sliderWidth)];
     slider.backgroundColor = [UIColor blueColor];
     [self addSubview:slider];
+    
+    UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(changeValue:)];
+    [slider addGestureRecognizer:pan];
+    
     
 }
 

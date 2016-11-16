@@ -10,4 +10,14 @@
 
 @interface DZSliderChooseColor : UIControl
 
+@property (assign, nonatomic) CGFloat value;
+
+@property (assign, nonatomic) CGFloat maxValue;
+
+@property (assign, nonatomic) CGFloat minVlaue;
+
+@property (retain, nonatomic) UIColor *startColor;
+
+@property (retain, nonatomic) UIColor *endColor;
+
 @end
