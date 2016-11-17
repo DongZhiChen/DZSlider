@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F211E9C91DDDDCAA00A45548 /* V_ChooseColor.m in Sources */ = {isa = PBXBuildFile; fileRef = F211E9C81DDDDCAA00A45548 /* V_ChooseColor.m */; };
+		F211E9CB1DDDDCBA00A45548 /* V_ChooseColor.xib in Resources */ = {isa = PBXBuildFile; fileRef = F211E9CA1DDDDCBA00A45548 /* V_ChooseColor.xib */; };
+		F211E9CF1DDDE71600A45548 /* pickerColorWheel.png in Resources */ = {isa = PBXBuildFile; fileRef = F211E9CD1DDDE71600A45548 /* pickerColorWheel.png */; };
+		F211E9D01DDDE71600A45548 /* pickerColorWheel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F211E9CE1DDDE71600A45548 /* pickerColorWheel@2x.png */; };
+		F211E9D31DDDE7A800A45548 /* HSV.c in Sources */ = {isa = PBXBuildFile; fileRef = F211E9D11DDDE7A800A45548 /* HSV.c */; };
 		F2ECCD051DDB4CFF008892A1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F2ECCD041DDB4CFF008892A1 /* main.m */; };
 		F2ECCD081DDB4CFF008892A1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F2ECCD071DDB4CFF008892A1 /* AppDelegate.m */; };
 		F2ECCD0B1DDB4CFF008892A1 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2ECCD0A1DDB4CFF008892A1 /* ViewController.m */; };
@@ -17,6 +22,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F211E9C71DDDDCAA00A45548 /* V_ChooseColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = V_ChooseColor.h; path = ChooseColorView/V_ChooseColor.h; sourceTree = "<group>"; };
+		F211E9C81DDDDCAA00A45548 /* V_ChooseColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = V_ChooseColor.m; path = ChooseColorView/V_ChooseColor.m; sourceTree = "<group>"; };
+		F211E9CA1DDDDCBA00A45548 /* V_ChooseColor.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = V_ChooseColor.xib; path = ChooseColorView/V_ChooseColor.xib; sourceTree = "<group>"; };
+		F211E9CD1DDDE71600A45548 /* pickerColorWheel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pickerColorWheel.png; sourceTree = "<group>"; };
+		F211E9CE1DDDE71600A45548 /* pickerColorWheel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pickerColorWheel@2x.png"; sourceTree = "<group>"; };
+		F211E9D11DDDE7A800A45548 /* HSV.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = HSV.c; path = "颜色选取滑块/HSV.c"; sourceTree = "<group>"; };
+		F211E9D21DDDE7A800A45548 /* HSV.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HSV.h; path = "颜色选取滑块/HSV.h"; sourceTree = "<group>"; };
 		F2ECCD001DDB4CFF008892A1 /* DZSlider.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DZSlider.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2ECCD041DDB4CFF008892A1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F2ECCD061DDB4CFF008892A1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -42,6 +54,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F211E9C61DDDDC5100A45548 /* ChooseColorView */ = {
+			isa = PBXGroup;
+			children = (
+				F211E9C71DDDDCAA00A45548 /* V_ChooseColor.h */,
+				F211E9C81DDDDCAA00A45548 /* V_ChooseColor.m */,
+				F211E9CA1DDDDCBA00A45548 /* V_ChooseColor.xib */,
+			);
+			name = ChooseColorView;
+			sourceTree = "<group>";
+		};
+		F211E9CC1DDDE71600A45548 /* image */ = {
+			isa = PBXGroup;
+			children = (
+				F211E9CD1DDDE71600A45548 /* pickerColorWheel.png */,
+				F211E9CE1DDDE71600A45548 /* pickerColorWheel@2x.png */,
+			);
+			path = image;
+			sourceTree = "<group>";
+		};
 		F2ECCCF71DDB4CFF008892A1 = {
 			isa = PBXGroup;
 			children = (
@@ -61,6 +92,8 @@
 		F2ECCD021DDB4CFF008892A1 /* DZSlider */ = {
 			isa = PBXGroup;
 			children = (
+				F211E9CC1DDDE71600A45548 /* image */,
+				F211E9C61DDDDC5100A45548 /* ChooseColorView */,
 				F2ECCD1A1DDB4D04008892A1 /* 颜色选取滑块 */,
 				F2ECCD061DDB4CFF008892A1 /* AppDelegate.h */,
 				F2ECCD071DDB4CFF008892A1 /* AppDelegate.m */,
@@ -86,6 +119,8 @@
 		F2ECCD1A1DDB4D04008892A1 /* 颜色选取滑块 */ = {
 			isa = PBXGroup;
 			children = (
+				F211E9D11DDDE7A800A45548 /* HSV.c */,
+				F211E9D21DDDE7A800A45548 /* HSV.h */,
 				F2ECCD1B1DDB4D5E008892A1 /* DZSliderChooseColor.h */,
 				F2ECCD1C1DDB4D5E008892A1 /* DZSliderChooseColor.m */,
 			);
@@ -151,9 +186,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F211E9D01DDDE71600A45548 /* pickerColorWheel@2x.png in Resources */,
 				F2ECCD131DDB4CFF008892A1 /* LaunchScreen.storyboard in Resources */,
 				F2ECCD101DDB4CFF008892A1 /* Assets.xcassets in Resources */,
 				F2ECCD0E1DDB4CFF008892A1 /* Main.storyboard in Resources */,
+				F211E9CB1DDDDCBA00A45548 /* V_ChooseColor.xib in Resources */,
+				F211E9CF1DDDE71600A45548 /* pickerColorWheel.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -167,7 +205,9 @@
 				F2ECCD0B1DDB4CFF008892A1 /* ViewController.m in Sources */,
 				F2ECCD1D1DDB4D5E008892A1 /* DZSliderChooseColor.m in Sources */,
 				F2ECCD081DDB4CFF008892A1 /* AppDelegate.m in Sources */,
+				F211E9D31DDDE7A800A45548 /* HSV.c in Sources */,
 				F2ECCD051DDB4CFF008892A1 /* main.m in Sources */,
+				F211E9C91DDDDCAA00A45548 /* V_ChooseColor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -326,6 +366,7 @@
 				F2ECCD191DDB4CFF008892A1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

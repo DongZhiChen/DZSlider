@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 #import "DZSliderChooseColor.h"
+#import "V_ChooseColor.h"
 
 @interface ViewController : UIViewController
 

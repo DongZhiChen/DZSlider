@@ -31,7 +31,7 @@ static CGFloat sliderWidth = 20.0;
         
         frame.size.height = colorBarHeight + sliderWidth;
         self.frame = frame;
-        self.layer.opaque = NO;
+       
         
         [self initData];
         [self initView];
@@ -42,19 +42,31 @@ static CGFloat sliderWidth = 20.0;
 }
 
 
--(void)drawRect:(CGRect)rect{
+-(id)initWithCoder:(NSCoder *)aDecoder{
 
-    [super drawRect:rect];
+    self = [super initWithCoder:aDecoder];
     
-    if(!gradientLayer)
-    [self sliderBar];
+    if(self){
     
+        CGRect frame = self.frame;
+        frame.size.height = colorBarHeight + sliderWidth;
+        self.frame = frame;
+        
+        [self initData];
+        [self initView];
+        
+    }
+    return self;
 }
+
+
+
+#pragma mark - initSet -
 
 -(void)initView{
 
     self.layer.masksToBounds =YES;
-
+    self.layer.opaque = NO;
     [self slider];
     
 }
@@ -65,6 +77,8 @@ static CGFloat sliderWidth = 20.0;
     self.maxValue = 1;
     self.minVlaue = 0;
     _value = 0.5;
+    _startColor = [UIColor blackColor];
+    _endColor = [UIColor redColor];
     barWidth = CGRectGetWidth(self.bounds)-sliderWidth;
 
     maxRight = CGRectGetWidth(self.bounds)-sliderWidth/2.0;
@@ -73,6 +87,37 @@ static CGFloat sliderWidth = 20.0;
     
 }
 
+
+
+-(void)sliderBar{
+    
+    gradientLayer = [CAGradientLayer layer];
+    gradientLayer.colors = @[(__bridge id)self.startColor.CGColor,(__bridge id)self.endColor.CGColor];
+    gradientLayer.locations = @[@0,@1];
+    gradientLayer.startPoint = CGPointMake(0, 0.5);
+    gradientLayer.endPoint = CGPointMake(1, 0.5);
+    gradientLayer.frame = CGRectMake(sliderWidth/2.0, 0, CGRectGetWidth(self.bounds)-sliderWidth, colorBarHeight);
+    gradientLayer.cornerRadius = 3.0;
+    gradientLayer.masksToBounds = YES;
+    [self.layer addSublayer:gradientLayer];
+    
+}
+
+
+-(void)slider{
+    
+    slider = [[UIView alloc] initWithFrame:CGRectMake(0, colorBarHeight, sliderWidth, sliderWidth)];
+    slider.backgroundColor = [UIColor blueColor];
+    [self addSubview:slider];
+    
+    UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(changeValue:)];
+    [slider addGestureRecognizer:pan];
+    
+    
+}
+
+
+#pragma mark - UIGestureRecognizer -
 
 -(void)changeValue:(UIGestureRecognizer *)GR{
 
@@ -114,42 +159,24 @@ static CGFloat sliderWidth = 20.0;
 
 
 
--(void)sliderBar{
+-(void)setValue:(CGFloat)value{
+
+    _value = value;
     
-    gradientLayer = [CAGradientLayer layer];
-    
-    if(_startColor == nil){
-    
-        _startColor = [UIColor whiteColor];
-    }
-    
-    if(_endColor == nil){
-    
-        _endColor = [UIColor redColor];
-        
-    }
-    
-    gradientLayer.colors = @[(__bridge id)self.startColor.CGColor,(__bridge id)self.endColor.CGColor];
-    gradientLayer.locations = @[@0,@1];
-    gradientLayer.startPoint = CGPointMake(0, 0.5);
-    gradientLayer.endPoint = CGPointMake(1, 0.5);
-    gradientLayer.frame = CGRectMake(sliderWidth/2.0, 0, CGRectGetWidth(self.bounds)-sliderWidth, colorBarHeight);
-    gradientLayer.cornerRadius = 3.0;
-    gradientLayer.masksToBounds = YES;
-    [self.layer addSublayer:gradientLayer];
+    CGPoint barPoint = slider.center;
+    barPoint.x = (_value * barWidth)/_maxValue;
+    slider.center = barPoint;
     
 }
 
+#pragma mark -
 
--(void)slider{
+-(void)drawRect:(CGRect)rect{
     
-    slider = [[UIView alloc] initWithFrame:CGRectMake(0, colorBarHeight, sliderWidth, sliderWidth)];
-    slider.backgroundColor = [UIColor blueColor];
-    [self addSubview:slider];
+    [super drawRect:rect];
     
-    UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(changeValue:)];
-    [slider addGestureRecognizer:pan];
-    
+    if(!gradientLayer)
+        [self sliderBar];
     
 }
 
